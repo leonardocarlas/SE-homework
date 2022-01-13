@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>it.unipd.dei.se</groupId>
+    <artifactId>seupd2021-xiii</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <!-- Project Description -->
+
+    <name>Ryusei</name>
+    <description>Touché @ CLEF - Task 1: Argument Retrieval for Controversial Questions.</description>
+    <url>https://bitbucket.org/upd-dei-stud-prj/seupd2021-xiii</url>
+    <inceptionYear>2021</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>2019170</id>
+            <name>Gianmarco Prando</name>
+            <email>gianmarco.prando@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>2019172</id>
+            <name>Laura Menotti</name>
+            <email>laura.menotti@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>1237768</id>
+            <name>Leonardo Carlassare</name>
+            <email>leonardo.carlassare@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>2006677</id>
+            <name>Matteo Carnelos</name>
+            <email>matteo.carnelos@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>1237030</id>
+            <name>Thomas Porro</name>
+            <email>thomas.porro@studenti.unipd.it</email>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>Department of Information Engineering (DEI), University of Padua, Italy</name>
+        <url>https://www.dei.unipd.it/en/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Build Settings -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lucene.version>8.8.1</lucene.version>
+        <java.version>11</java.version>
+    </properties>
+
+    <build>
+        <defaultGoal>compile</defaultGoal>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        <directory>${basedir}/target</directory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <reportOutputDirectory>${basedir}/javadoc</reportOutputDirectory>
+                    <author>true</author>
+                    <nosince>false</nosince>
+                    <show>protected</show>
+                    <source>${java.version}</source>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>it.unipd.dei.se.Ryusei</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Project Dependencies -->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-xc</artifactId>
+            <version>1.9.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-opennlp</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-benchmark</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

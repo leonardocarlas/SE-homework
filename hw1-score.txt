@@ -1,0 +1,7 @@
+Score 19
+
+" - The related work section should have focused previous work on argument retrieval, giving an idea of the approaches you relied on (not on the summary of your baseline and improved tests)
+- I was a bit puzzled by the structure of your report. In section 2 (fig 1-3) you compare the peformance of 3 alternatives to your baseline and then there is another system in section 5... all the results should be presented and discussed together
+- Good that you looked at each topic performance. You could push this a bit further doing ""failure analysis"", i.e. looking at each topic by hand and trying to understand why it worked or not 
+- Good that you tried query expansion via synonyms
+- What are your plans for homework 2? I see you are a mix of 6 CFU and 9 CFU students"
